@@ -49,3 +49,39 @@ function checkPosition () {
 }
 
 
+function Plateau(xMax, yMax) {
+    try {
+        this.xMax = xMax;
+        this.yMax = yMax;
+    }
+    catch (err) {
+    }
+}
+
+function initializePlateau(dimensions) {
+    try {
+        const dimensionsData = dimensions.split(' ');
+
+        // construct a Plateau object and set dimension x and y
+        plateau = new Plateau(dimensionsData[0], dimensionsData[1]);
+    }
+    catch (err) {
+    }
+}
+
+function initializeMarsRover (dimensions) {
+    const dimensionsData = dimensions.split(' ');
+    marsRover = new MarsRover(dimensionsData[0], dimensionsData[1], dimensionsData[2]);
+}
+
+
+function MarsRover(xCoords, yCoords, direction) {
+
+    try {
+        if (xCoords < 0 || xCoords > plateau.xMax || yCoords < 0 || yCoords > plateau.yMax) {
+            throw "The mars rover is initialized outside of the plateau boundary"
+        }
+
+        if (!(direction in ))
+    }
+}
