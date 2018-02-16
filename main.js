@@ -27,10 +27,11 @@ document.getElementById('input').onchange = function() {
 const plateau;
 const marsRover;
 
-const prevPositionX = rover.position[0];
-const prevPositionY = rover.position[Y];
-const prevDirection = rover.direction;
+const prevPositionX = marsRover.position[0];
+const prevPositionY = marsRover.position[Y];
+const prevDirection = marsRover.direction;
 
+//make sure x and y are between 0 and 5
 
 function checkPosition () {
     if (marsRover.position[0 > 5]) {
@@ -46,3 +47,5 @@ function checkPosition () {
         marsRover.position[1] = 5;
     }
 }
+
+
