@@ -23,3 +23,26 @@ document.getElementById('input').onchange = function() {
     }
     reader.readAsText(input);
 }
+
+const plateau;
+const marsRover;
+
+const prevPositionX = rover.position[0];
+const prevPositionY = rover.position[Y];
+const prevDirection = rover.direction;
+
+
+function checkPosition () {
+    if (marsRover.position[0 > 5]) {
+        marsRover.position[0] = 0;
+    }
+    if (marsRover.position[0] < 0) {
+        marsRover.position[0] = 5;
+    }
+    if (marsRover.position[1] > 5) {
+        marsRover.position[1] = 0;
+    }
+    if (marsRover.position[1] < 0) {
+        marsRover.position[1] = 5;
+    }
+}
