@@ -79,50 +79,54 @@ function initializeMarsRover (dimensions) {
 }
 
 
-function MarsRover(xCoords, yCoords, direction) {
-
-    try {
-        if (xCoords < 0 || xCoords > plateau.xMax || yCoords < 0 || yCoords > plateau.yMax) {
-            throw "The mars rover is initialized outside of the plateau boundary"
-        }
-
-        if (!(direction in ))
-    }
-}
-
 // functions to move rover 
 
-function goLeft () {
-    switch(marsRover.direction) {
-        case 'N':
-                marsRover.direction = 'W';
-                break;
-        case 'E':
-                marsRover.direction = 'N';
-        case 'S':
-                marsRover.direction = 'E';
-                break;
-        case 'W':
-                marsRover.direction = 'S';
-                break;
-    }
+//lookup hash
+var makeLeftTurn = {
+    N: "W",
+    E: "N",
+    S: "E",
+    W: "S"
 }
 
-function goRight () {
-    switch(marsRover.direction){
-        case 'N':
-                marsRover.direction = 'E';
-                break;
-        case 'E':
-                marsRover.direction = 'S';
-                break;
-        case 'S':
-                marsRover.direction = 'W';
-                break;
-        case 'W': 
-                marsRover.direction = 'N';
-    }
+var makeRightTurn = {
+    N: "E",
+    E: "S",
+    S: "W",
+    W: "N"
 }
+
+// function goLeft () {
+//     switch(marsRover.direction) {
+//         case 'N':
+//                 marsRover.direction = 'W';
+//                 break;
+//         case 'E':
+//                 marsRover.direction = 'N';
+//         case 'S':
+//                 marsRover.direction = 'E';
+//                 break;
+//         case 'W':
+//                 marsRover.direction = 'S';
+//                 break;
+//     }
+// }
+
+// function goRight () {
+//     switch(marsRover.direction){
+//         case 'N':
+//                 marsRover.direction = 'E';
+//                 break;
+//         case 'E':
+//                 marsRover.direction = 'S';
+//                 break;
+//         case 'S':
+//                 marsRover.direction = 'W';
+//                 break;
+//         case 'W': 
+//                 marsRover.direction = 'N';
+//     }
+// }
 
 function goForward () {
     switch(marsRover.direction) {
@@ -144,4 +148,23 @@ function goForward () {
                 break;
     }
 
+}
+
+function MarsRover(xCoords, yCoords, direction) {
+
+    try {
+        if (xCoords < 0 || xCoords > plateau.xMax || yCoords < 0 || yCoords > plateau.yMax) {
+            throw "The mars rover is initialized outside of the plateau boundary"
+        }
+
+        if (!(direction in makeRightTurn)) {
+            throw "The direction instruction is incorrect"
+        }
+        this.xCoords = Number(xCoords);
+        this.yCoords = Number(yCoords);
+        this.direction = direction;
+    }
+    catch(err) {
+        "Error: " + err;
+    }
 }
