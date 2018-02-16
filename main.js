@@ -27,9 +27,9 @@ document.getElementById('input').onchange = function() {
 const plateau;
 const marsRover;
 
-const prevPositionX = marsRover.position[0];
-const prevPositionY = marsRover.position[Y];
-const prevDirection = marsRover.direction;
+// const prevPositionX = marsRover.position[0];
+// const prevPositionY = marsRover.position[Y];
+// const prevDirection = marsRover.direction;
 
 //make sure x and y are between 0 and 5
 
@@ -149,6 +149,31 @@ function goForward () {
     }
 
 }
+
+function moveForward(roverDirection) {
+    try {
+        if (roverDirection === "N" && marsRover.yCoords ++ > plateau.yMax) {
+            throw "rover outside of plateau max Y axis dimension";
+        }
+
+        if (roverDirection === "E" && marsRover.xCoords ++ > plateau.xMax) {
+            throw "rover outside of plateau max X axis dimension";
+        }
+
+        if (roverDirection === "S" && marsRover.yCoords -- < 0) {
+            throw "rover outside of plateau min Y axis dimension";
+        }
+
+        if (roverDirection === "W" && marsRover.xCoords -- < 0) {
+            throw "rover outside of plateau min X axis dimension";
+        }
+    }
+
+    catch(err) {
+        "Error: " + err;
+    }
+}
+
 
 function MarsRover(xCoords, yCoords, direction) {
 
