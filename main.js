@@ -33,28 +33,32 @@ const prevDirection = marsRover.direction;
 
 //make sure x and y are between 0 and 5
 
-function checkPosition () {
-    if (marsRover.position[0 > 5]) {
-        marsRover.position[0] = 0;
-    }
-    if (marsRover.position[0] < 0) {
-        marsRover.position[0] = 5;
-    }
-    if (marsRover.position[1] > 5) {
-        marsRover.position[1] = 0;
-    }
-    if (marsRover.position[1] < 0) {
-        marsRover.position[1] = 5;
-    }
-}
+// function checkPosition () {
+//     if (marsRover.position[0 > 5]) {
+//         marsRover.position[0] = 0;
+//     }
+//     if (marsRover.position[0] < 0) {
+//         marsRover.position[0] = 5;
+//     }
+//     if (marsRover.position[1] > 5) {
+//         marsRover.position[1] = 0;
+//     }
+//     if (marsRover.position[1] < 0) {
+//         marsRover.position[1] = 5;
+//     }
+// }
 
 
 function Plateau(xMax, yMax) {
     try {
-        this.xMax = xMax;
-        this.yMax = yMax;
+       if (xMax < 0 || yMax < 0) {
+           throw "Plateau dimensions are negative";
+       }
+        this.xMax = Number (xMax);
+        this.yMax = Number (yMax);
     }
     catch (err) {
+        "Error: " + err;
     }
 }
 
@@ -84,4 +88,60 @@ function MarsRover(xCoords, yCoords, direction) {
 
         if (!(direction in ))
     }
+}
+
+// functions to move rover 
+
+function goLeft () {
+    switch(marsRover.direction) {
+        case 'N':
+                marsRover.direction = 'W';
+                break;
+        case 'E':
+                marsRover.direction = 'N';
+        case 'S':
+                marsRover.direction = 'E';
+                break;
+        case 'W':
+                marsRover.direction = 'S';
+                break;
+    }
+}
+
+function goRight () {
+    switch(marsRover.direction){
+        case 'N':
+                marsRover.direction = 'E';
+                break;
+        case 'E':
+                marsRover.direction = 'S';
+                break;
+        case 'S':
+                marsRover.direction = 'W';
+                break;
+        case 'W': 
+                marsRover.direction = 'N';
+    }
+}
+
+function goForward () {
+    switch(marsRover.direction) {
+        case 'N':
+                marsRover.position[0] ++;
+                checkPosition();
+                break;
+        case 'E':
+                marsRover.position[1] ++;
+                checkPosition();
+                break;
+        case 'S':
+                marsRover.position[0] --;
+                checkPosition();
+                break;
+        case 'W':
+                marsRover.position[1] --;
+                checkPosition();
+                break;
+    }
+
 }
