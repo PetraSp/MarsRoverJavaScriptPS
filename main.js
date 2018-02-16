@@ -168,3 +168,21 @@ function MarsRover(xCoords, yCoords, direction) {
         "Error: " + err;
     }
 }
+
+
+MarsRover.prototype.moveRover = function(instructions) {
+
+var instructionsData = instructions.split(' ');
+for (i = 0; i < instructionsData.length; i ++) {
+    if (instructionsData[i] === "L") {
+        marsRover.direction = makeLeftTurn[marsRover.direction];
+    }
+    if (instructionsData[i] === "R") {
+        marsRover.direction = makeRightTurn[marsRover.direction];
+    }
+    if (instructionsData[i] === "M") {
+        moveForward(marsRover.direction);
+    }
+}
+
+};
