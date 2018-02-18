@@ -26,33 +26,12 @@ function trigger() {
 var plateau;
 var marsRover;
 
-// const prevPositionX = marsRover.position[0];
-// const prevPositionY = marsRover.position[Y];
-// const prevDirection = marsRover.direction;
-
-//make sure x and y are between 0 and 5
-
-// function checkPosition () {
-//     if (marsRover.position[0 > 5]) {
-//         marsRover.position[0] = 0;
-//     }
-//     if (marsRover.position[0] < 0) {
-//         marsRover.position[0] = 5;
-//     }
-//     if (marsRover.position[1] > 5) {
-//         marsRover.position[1] = 0;
-//     }
-//     if (marsRover.position[1] < 0) {
-//         marsRover.position[1] = 5;
-//     }
-// }
-
-
 function Plateau(xMax, yMax) {
     try {
        if (xMax < 0 || yMax < 0) {
            throw "Plateau dimensions are negative";
        }
+
         this.xMax = Number (xMax);
         this.yMax = Number (yMax);
     }
@@ -64,7 +43,6 @@ function Plateau(xMax, yMax) {
 function initializePlateau(dimensions) {
     try {
         const dimensionsData = dimensions.split(' ');
-
         // construct a Plateau object and set dimension x and y
         plateau = new Plateau(dimensionsData[0], dimensionsData[1]);
     }
@@ -79,7 +57,6 @@ function initializeMarsRover (dimensions) {
 
 
 // functions to move rover 
-
 //lookup hash
 var makeLeftTurn = {
     N: "W",
@@ -95,59 +72,6 @@ var makeRightTurn = {
     W: "N"
 }
 
-// function goLeft () {
-//     switch(marsRover.direction) {
-//         case 'N':
-//                 marsRover.direction = 'W';
-//                 break;
-//         case 'E':
-//                 marsRover.direction = 'N';
-//         case 'S':
-//                 marsRover.direction = 'E';
-//                 break;
-//         case 'W':
-//                 marsRover.direction = 'S';
-//                 break;
-//     }
-// }
-
-// function goRight () {
-//     switch(marsRover.direction){
-//         case 'N':
-//                 marsRover.direction = 'E';
-//                 break;
-//         case 'E':
-//                 marsRover.direction = 'S';
-//                 break;
-//         case 'S':
-//                 marsRover.direction = 'W';
-//                 break;
-//         case 'W': 
-//                 marsRover.direction = 'N';
-//     }
-// }
-
-// function goForward () {
-//     switch(marsRover.direction) {
-//         case 'N':
-//                 marsRover.position[0] ++;
-//                 checkPosition();
-//                 break;
-//         case 'E':
-//                 marsRover.position[1] ++;
-//                 checkPosition();
-//                 break;
-//         case 'S':
-//                 marsRover.position[0] --;
-//                 checkPosition();
-//                 break;
-//         case 'W':
-//                 marsRover.position[1] --;
-//                 checkPosition();
-//                 break;
-//     }
-
-// }
 
 function moveForward(roverDirection) {
     try {
@@ -173,19 +97,24 @@ function moveForward(roverDirection) {
     }
 }
 
-
 function MarsRover(xCoords, yCoords, direction) {
-
     try {
         if (xCoords < 0 || xCoords > plateau.xMax || yCoords < 0 || yCoords > plateau.yMax) {
             throw "The mars rover is initialized outside of the plateau boundary"
+        } else if (!(direction in makeRightTurn)) {
+            throw "The direction instruction is incorrect"
+        } else {
+            var tbody = document.getElementsByTagName('tbody') [0];
+
+            if (tbody) {
+                var tr = tbody.insertRow(tbody.rows.length);
+                var td = tr.insertCell(-1);
+                td.innerHTML = '<td' + xCoords +' '+yCoords + ' ' + direction +'</td>'
+            }
         }
 
-        if (!(direction in makeRightTurn)) {
-            throw "The direction instruction is incorrect"
-        }
-        this.xCoords = Number(xCoords);
-        this.yCoords = Number(yCoords);
+        this.xCoords = xCoords;
+        this.yCoords = yCoords;
         this.direction = direction;
     }
     catch(err) {
