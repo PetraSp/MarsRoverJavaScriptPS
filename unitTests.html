@@ -23,14 +23,33 @@
             results.total ++
             initializePlateau("5 5");
             initializeMarsRover(input);
-            
+
             if (expected !== marsRover.xCoords + " " + marsRover.yCoords + " " + marsRover.direction) {
                 results.bad ++
                 console.log("Expected " + expected + ", but was " + marsRover.xCoords + " " + marsRover.yCoords + " " + marsRover.direction);
             }
         }
 
-    
+        var results = {
+        total: 0,
+        bad: 0
+        };
+
+        testCreatePlateau("5 5", "5 5");
+        testCreatePlateau("5 -2", "undefined undefined");
+        testCreateMarsRover("5 5 E", "5 5 E");
+        testCreateMarsRover("-1 3 E", "undefined undefined undefined");
+        testCreateMarsRover("1 6 E", "undefined undefined undefined");
+        testCreateMarsRover("5 5 L", "undefined undefined undefined");
+        testMoveMarsRover("1 2 N", "LMLMLMLMM", "1 3 N");
+        testMoveMarsRover("3 3 E", "MMRMMRMRRM", "5 1 E");
+        testMoveMarsRover("4 3 W", "MMLMRMMRL", "0 2 W");
+        testMoveMarsRover("5 1 E", "MMLMRMMRL", "undefined undefined undefined");
+
+
+    console.log("Of " + results.total + " tests, " + results.bad + " failed, "
+        + (results.total - results.bad) + " passed.");
+
     </script>
 </head>
 <body>
