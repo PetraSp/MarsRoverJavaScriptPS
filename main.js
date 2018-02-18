@@ -104,12 +104,12 @@ function MarsRover(xCoords, yCoords, direction) {
         } else if (!(direction in makeRightTurn)) {
             throw "The direction instruction is incorrect"
         } else {
-            var tbody = document.getElementsByTagName('tbody') [0];
+            var tbody = document.getElementsByTagName('tbody')[0];
 
             if (tbody) {
                 var tr = tbody.insertRow(tbody.rows.length);
                 var td = tr.insertCell(-1);
-                td.innerHTML = '<td' + xCoords +' '+yCoords + ' ' + direction +'</td>'
+                td.innerHTML = '<td>' + xCoords +' '+yCoords + ' ' + direction +'</td>';
             }
         }
 
@@ -124,7 +124,7 @@ function MarsRover(xCoords, yCoords, direction) {
 
 
 MarsRover.prototype.moveRover = function(instructions) {
-    var instructionsData = instructions.split(' ');
+    var instructionsData = instructions.split('');
 
     for (i = 0; i < instructionsData.length; i ++) {
         if (instructionsData[i] === "L") {
