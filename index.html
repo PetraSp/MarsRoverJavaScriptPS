@@ -5,17 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mars Rover</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
 <body>
-    <input type="file" id="input">
+    <input id="input" name="input" onchange="trigger();" type="file" >
     <div id="output">
         <table>
             <thead>
-                <th>Starting position</th>
-                <th>Final position</th>
+                <tr>
+                    <th>Starting position</th>
+                </tr>
             </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Final position</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
         </table>
     </div>
 </body>
