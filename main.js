@@ -1,31 +1,30 @@
 // ask user to select the file
-document.getElementById('input').onchange = function() {
-    var selectedFile = this.files[0];
-    
+function trigger() {
+    var input = document.getElementById('input');
+    var selectedFile = input.files[0];
     var reader = new FileReader();
-    reader.onload = function(progressEvent){
-        console.log(this.result);
 
+    reader.onload = function(progressEvent){
         var lines = this.result.split('\n');
+        
         for (var line = 0; line < lines.length; line ++) {
             if (line === 0) {
                 initializePlateau(lines[line].trim());
             }
-            // create td with initial position
-            else if (line % 2 === 0){
+            else if (line % 2 !== 0){
                 initializeMarsRover(lines[line].trim());
             }
             else {
-            //create td with final position
-                marsRover.moveRover(lines[line].trim());
+                MarsRover.prototype.moveRover(lines[line].trim());
             }
         }
     }
-    reader.readAsText(input);
+
+    reader.readAsText(selectedFile);
 }
 
-const plateau;
-const marsRover;
+var plateau;
+var marsRover;
 
 // const prevPositionX = marsRover.position[0];
 // const prevPositionY = marsRover.position[Y];
@@ -128,27 +127,27 @@ var makeRightTurn = {
 //     }
 // }
 
-function goForward () {
-    switch(marsRover.direction) {
-        case 'N':
-                marsRover.position[0] ++;
-                checkPosition();
-                break;
-        case 'E':
-                marsRover.position[1] ++;
-                checkPosition();
-                break;
-        case 'S':
-                marsRover.position[0] --;
-                checkPosition();
-                break;
-        case 'W':
-                marsRover.position[1] --;
-                checkPosition();
-                break;
-    }
+// function goForward () {
+//     switch(marsRover.direction) {
+//         case 'N':
+//                 marsRover.position[0] ++;
+//                 checkPosition();
+//                 break;
+//         case 'E':
+//                 marsRover.position[1] ++;
+//                 checkPosition();
+//                 break;
+//         case 'S':
+//                 marsRover.position[0] --;
+//                 checkPosition();
+//                 break;
+//         case 'W':
+//                 marsRover.position[1] --;
+//                 checkPosition();
+//                 break;
+//     }
 
-}
+// }
 
 function moveForward(roverDirection) {
     try {
