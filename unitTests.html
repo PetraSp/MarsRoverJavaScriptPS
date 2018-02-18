@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Unit tests for Mars rover assignment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="main.js"></script>
+    <script>
+        // test to create Plateau
+        function testCreatePlateau(input, expected) {
+            results.total ++
+            initializePlateau(input);
+
+            if (expected !== plateau.xMax + " " + plateau.yMax) {
+                results.bad++
+                console.log("Expected " + expected + ", but was " + plateau.xMax + " " + plateau.yMax);
+            }
+        }
+
+        //test to create MarsRover
+        function testCreateMarsRover(input, expected) {
+            results.total ++
+            initializePlateau("5 5");
+            initializeMarsRover(input);
+            
+            if (expected !== marsRover.xCoords + " " + marsRover.yCoords + " " + marsRover.direction) {
+                results.bad ++
+                console.log("Expected " + expected + ", but was " + marsRover.xCoords + " " + marsRover.yCoords + " " + marsRover.direction);
+            }
+        }
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
