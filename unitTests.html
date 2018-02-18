@@ -30,6 +30,19 @@
             }
         }
 
+        //test to marRover Movemement
+        function testMoveMarsRover(inputStartPos, inputInstructions, expected) {
+            results.total ++ 
+            initializePlateau("5 5");
+            initializeMarsRover(inputStartPos);
+            marsRover.moveRover(inputInstructions);
+
+            if (expected !== marsRover.xCoords + " " + marsRover.yCoords + " " + marsRover.direction) {
+                results.bad ++
+                console.log("Expected " + expected + ", but was " + marsRover.xCoords + " " + marsRover.yCoords + " " + marsRover.direction);
+            }
+        }
+
         var results = {
         total: 0,
         bad: 0
