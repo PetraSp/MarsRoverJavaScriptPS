@@ -1,6 +1,5 @@
 # MarsRoverJavaScriptPS
 
-
 ## Assumptions
 * The user will select an input file.
 * The input file includes:
@@ -8,7 +7,7 @@
    * second line for rover's initial position
    * third line represent the instructions to move the rover 
 * It is not required to reset Rovers after each file processed
-
+* The rovers cannot collide with each other.
 
 ## Installation
 There are two ways to install the app:
