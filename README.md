@@ -22,11 +22,13 @@ There are two ways to install the app:
 3. Rename the new folder
 4. Delete the zip archive
 5. Go to the new folder from the terminal
+6. Change the extensions of main.txt file to main.js file
 
 **Installation steps - Clone repo**
 1. In your terminal, create a new folder on your local machine 
 2. Go the the repository page on GitHub: [MarsRoverJavaScriptPS](https://github.com/PetraSp/MarsRoverJavaScriptPS.git) 
 3. Inside your new folder, clone the repo on your new local folder (git clone https://github.com/PetraSp/MarsRoverJavaScriptPS.git)
+4. Change the extensions of main.txt file to main.js file
 
 
 ## Testing
