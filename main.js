@@ -124,18 +124,27 @@ function MarsRover(xCoords, yCoords, direction) {
 
 
 MarsRover.prototype.moveRover = function(instructions) {
+    var instructionsData = instructions.split(' ');
 
-var instructionsData = instructions.split(' ');
-for (i = 0; i < instructionsData.length; i ++) {
-    if (instructionsData[i] === "L") {
-        marsRover.direction = makeLeftTurn[marsRover.direction];
+    for (i = 0; i < instructionsData.length; i ++) {
+        if (instructionsData[i] === "L") {
+            marsRover.direction = makeLeftTurn[marsRover.direction];
+        }
+
+        if (instructionsData[i] === "R") {
+            marsRover.direction = makeRightTurn[marsRover.direction];
+        }
+
+        if (instructionsData[i] === "M") {
+            moveForward(marsRover.direction);
+        }
     }
-    if (instructionsData[i] === "R") {
-        marsRover.direction = makeRightTurn[marsRover.direction];
-    }
-    if (instructionsData[i] === "M") {
-        moveForward(marsRover.direction);
+
+    var tbody = document.getElementsByTagName('tbody')[1];
+
+    if (tbody) {
+        var tr = tbody.insertRow(tbody.rows.length);
+        var td = tr.insertCell(-1);
+        td.innerHTML = '<td>'+ marsRover.xCoords +' '+ marsRover.yCoords + ' '+ marsRover.direction +'<td>';
     }
 }
-
-};
